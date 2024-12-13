@@ -1,6 +1,0 @@
-@Software_Foundations_Learning_Programme__HostAddress = http://localhost:5124
-
-GET {{Software_Foundations_Learning_Programme__HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
