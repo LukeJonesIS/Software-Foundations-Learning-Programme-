@@ -14,7 +14,6 @@ namespace Software_Foundations_Learning_Programme_.DataStore
             {
                 new AddressDto()
                 {
-                    Id = 1,
                     address_line1 = "2 Dummy Lane",
                     address_line2 = "Fake Town",
                     city = "London",
@@ -23,7 +22,14 @@ namespace Software_Foundations_Learning_Programme_.DataStore
 
                 new AddressDto()
                 {
-                    Id = 2,
+                    address_line1 = "4 Dummy Lane",
+                    address_line2 = "Fake Town",
+                    city = "London",
+                    postcode = "FA12_6KE"
+                },
+
+                new AddressDto()
+                {
                     address_line1 = "3 Fake Street",
                     address_line2 = "Dummy Town",
                     city = "Manchester",
