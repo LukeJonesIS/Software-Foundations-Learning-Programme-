@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Software_Foundations_Learning_Programme_.DataStore;
+using Software_Foundations_Learning_Programme_.Models;
 
 namespace Software_Foundations_Learning_Programme_.Controllers
 {
@@ -7,11 +8,16 @@ namespace Software_Foundations_Learning_Programme_.Controllers
     [Route("api/addresses")]
     public class AddressesController : ControllerBase
     {
-        [HttpGet("{postcode}")]
-        public JsonResult GetAddresses(string postcode)
+        [HttpGet("{postcode}")] 
+        public ActionResult<AddressDto> GetAddresses(string postcode)
         {
-            return new JsonResult(
-                AddressesDataStore.Current.Addresses.FirstOrDefault(a => a.postcode == postcode));
+            var addressToReturn = AddressesDataStore.Current.Addresses
+                .FirstOrDefault(a => a.postcode == postcode);
+
+            if (addressToReturn == null){
+                return NotFound();
+            }
+            return Ok(addressToReturn);
         }
     }
 }
