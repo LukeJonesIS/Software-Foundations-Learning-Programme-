@@ -12,7 +12,7 @@ namespace Software_Foundations_Learning_Programme_.Controllers
         public ActionResult<AddressDto> GetAddresses(string postcode)
         {
             var addressToReturn = AddressesDataStore.Current.Addresses
-                .FirstOrDefault(a => a.postcode == postcode);
+            .Where(a => a.postcode == postcode).ToList();
 
             if (addressToReturn == null){
                 return NotFound();
