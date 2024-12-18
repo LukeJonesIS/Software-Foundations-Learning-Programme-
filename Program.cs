@@ -27,7 +27,7 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
-    app.MapControllers();
+    _ = app.MapControllers();
 });
 
 app.Run();
