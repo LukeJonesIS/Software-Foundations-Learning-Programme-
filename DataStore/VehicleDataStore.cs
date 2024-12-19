@@ -14,20 +14,20 @@ namespace Software_Foundations_Learning_Programme_.DataStore
             {
                 new VehicleDto()
                 {
-                    vrn = "EVS400",
-                    make = "Tesla",
-                    model = "Series S",
-                    year_made = 2018,
-                    fuel_type = "electric"
+                    Vrn = "EVS400",
+                    Make = "Tesla",
+                    Model = "Series S",
+                    Year_made = 2018,
+                    Fuel_type = "electric"
                 },
 
                 new VehicleDto()
                 {
-                    vrn = "CAS300",
-                    make = "Volkswagon",
-                    model = "Fox",
-                    year_made = 2008,
-                    fuel_type = "petrol"
+                    Vrn = "CAS300",
+                    Make = "Volkswagon",
+                    Model = "Fox",
+                    Year_made = 2008,
+                    Fuel_type = "petrol"
                 }
             };
         }

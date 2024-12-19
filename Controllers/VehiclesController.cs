@@ -12,7 +12,7 @@ namespace Software_Foundations_Learning_Programme_.Controllers
         public ActionResult<VehicleDto> GetVehicles(string vrn)
         {
             var VehicleToReturn = VehiclesDataStore.Current.Vehicles
-                .FirstOrDefault(a => a.vrn == vrn);
+                .FirstOrDefault(a => a.Vrn == vrn);
 
             if (VehicleToReturn == null){
                 return NotFound();

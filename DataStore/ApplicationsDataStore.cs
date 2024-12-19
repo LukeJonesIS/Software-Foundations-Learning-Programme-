@@ -14,16 +14,16 @@ namespace Software_Foundations_Learning_Programme_.DataStore
             {
                 new ApplicationDto()
                 {
-                    id =  1,
-                    name = "Fake Man",
-                    email = "Londoner@fake.com",
-                    address = new AddressDto(){
-                        address_line1 = "2 Dummy Lane",
-                        address_line2 = "Fake Town",
-                        city = "London",
-                        postcode = "FA12_6KE"
+                    Id =  1,
+                    Name = "Fake Man",
+                    Email = "Londoner@fake.com",
+                    Address = new AddressDto(){
+                        Address_line1 = "2 Dummy Lane",
+                        Address_line2 = "Fake Town",
+                        City = "London",
+                        Postcode = "FA12_6KE"
                     },
-                    vrn = "FA12_6KE"
+                    Vrn = "FA12_6KE"
                 }
             };
         }

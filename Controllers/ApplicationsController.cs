@@ -12,18 +12,18 @@ namespace Software_Foundations_Learning_Programme_.Controllers
         [HttpPost("Create")] 
         public ActionResult<ApplicationDto> CreateApplication(ApplicationCreationDto application)
         {
-           var maxApplicationId = ApplicationsDataStore.Current.Applications.Max(p => p.id);
+           var maxApplicationId = ApplicationsDataStore.Current.Applications.Max(p => p.Id);
 
            var finalApplication = new ApplicationDto()
            {
-            id = ++maxApplicationId,
-            name = application.name,
-            email = application.email,
-            address = application.address,
-            vrn = application.vrn
+            Id = ++maxApplicationId,
+            Name = application.Name,
+            Email = application.Email,
+            Address = application.Address,
+            Vrn = application.Vrn
            };
            
-           return CreatedAtAction(nameof(CreateApplication), new { id = finalApplication.id }, finalApplication);
+           return CreatedAtAction(nameof(CreateApplication), new { id = finalApplication.Id }, finalApplication);
         }
     }
         

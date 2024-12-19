@@ -14,26 +14,26 @@ namespace Software_Foundations_Learning_Programme_.DataStore
             {
                 new AddressDto()
                 {
-                    address_line1 = "2 Dummy Lane",
-                    address_line2 = "Fake Town",
-                    city = "London",
-                    postcode = "FA12_6KE"
+                    Address_line1 = "2 Dummy Lane",
+                    Address_line2 = "Fake Town",
+                    City = "London",
+                    Postcode = "FA12_6KE"
                 },
 
                 new AddressDto()
                 {
-                    address_line1 = "4 Dummy Lane",
-                    address_line2 = "Fake Town",
-                    city = "London",
-                    postcode = "FA12_6KE"
+                    Address_line1 = "4 Dummy Lane",
+                    Address_line2 = "Fake Town",
+                    City = "London",
+                    Postcode = "FA12_6KE"
                 },
 
                 new AddressDto()
                 {
-                    address_line1 = "3 Fake Street",
-                    address_line2 = "Dummy Town",
-                    city = "Manchester",
-                    postcode = "NO7_4RL"
+                    Address_line1 = "3 Fake Street",
+                    Address_line2 = "Dummy Town",
+                    City = "Manchester",
+                    Postcode = "NO7_4RL"
                 }
             };
         }
