@@ -1,3 +1,5 @@
 obj/Debug
 bin/Debug
 EvGrantApplication.db
+EvGrantApplication.db-shm
+EvGrantApplication.db-wal
