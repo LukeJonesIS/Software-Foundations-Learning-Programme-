@@ -7,7 +7,7 @@ namespace Software_Foundations_Learning_Programme_.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public required int Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -17,8 +17,17 @@ namespace Software_Foundations_Learning_Programme_.Entities
         [MaxLength(50)]
         public required string Email { get; set; }
 
-        [ForeignKey("AddressId")]
-        public required Address Address { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Address_line1 { get; set; } = string.Empty;
+        [MaxLength(50)]
+        public string? Address_line2 { get; set; }
+        [Required]
+        [MaxLength(20)]
+        public string City { get; set; } = string.Empty;
+        [Required]
+        [MaxLength(20)]
+        public string Postcode { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(10)]
@@ -29,6 +38,10 @@ namespace Software_Foundations_Learning_Programme_.Entities
             Name = name;
             Email = email;
             Vrn = vrn;
+        }
+
+        public Application()
+        {
         }
     }
 }

@@ -17,12 +17,10 @@ namespace Software_Foundations_Learning_Programme_.DataStore
                     Id =  1,
                     Name = "Fake Man",
                     Email = "Londoner@fake.com",
-                    Address = new AddressDto(){
-                        Address_line1 = "2 Dummy Lane",
-                        Address_line2 = "Fake Town",
-                        City = "London",
-                        Postcode = "FA12_6KE"
-                    },
+                    Address_line1 = "2 Dummy Lane",
+                    Address_line2 = "Fake Town",
+                    City = "London",
+                    Postcode = "FA12_6KE",
                     Vrn = "FA12_6KE"
                 }
             };
