@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Software_Foundations_Learning_Programme_.DataStore;
 using Software_Foundations_Learning_Programme_.Models;
 using Software_Foundations_Learning_Programme_.Services;
 using Software_Foundations_Learning_Programme_.Entities;
@@ -20,8 +19,6 @@ namespace Software_Foundations_Learning_Programme_.Controllers
         [HttpPost("Create")] 
         public async Task<ActionResult<Application>> CreateApplication(ApplicationCreationDto application)
         {
-           var maxApplicationId = ApplicationsDataStore.Current.Applications.Max(p => p.Id);
-
            var finalApplication = new Application()
            {
             Name = application.Name,
