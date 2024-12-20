@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Software_Foundations_Learning_Programme_.DataStore;
 using Software_Foundations_Learning_Programme_.Models;
+using Software_Foundations_Learning_Programme_.Services;
 
 namespace Software_Foundations_Learning_Programme_.Controllers
 {
@@ -8,11 +9,16 @@ namespace Software_Foundations_Learning_Programme_.Controllers
     [Route("api/addresses")]
     public class AddressesController : ControllerBase
     {
+        private readonly IEvGrantRepository _evGrantRepository;
+        public AddressesController(IEvGrantRepository evGrantRepository){
+            _evGrantRepository = evGrantRepository ??
+             throw new ArgumentNullException(nameof(evGrantRepository));
+        }
+
         [HttpGet("{postcode}")] 
-        public ActionResult<AddressDto> GetAddresses(string postcode)
+        public async Task<ActionResult<AddressDto>> GetAddresses(string postcode)
         {
-            var addressToReturn = AddressesDataStore.Current.Addresses
-            .Where(a => a.Postcode == postcode).ToList();
+            var addressToReturn = await _evGrantRepository.GetAddresses(postcode);
 
             if (addressToReturn == null){
                 return NotFound();
