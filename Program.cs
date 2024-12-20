@@ -13,7 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<EvGrantApplicationContext>(dbContextOptions
-    => dbContextOptions.UseSqlite("Data Source=EvGrantApplication.db"));
+    => dbContextOptions.UseSqlite(
+        builder.Configuration["EvGrantApplicationDBConnectionString"]));
 
 var app = builder.Build();
 
