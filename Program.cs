@@ -1,5 +1,6 @@
 using Software_Foundations_Learning_Programme_.DbContexts;
 using Microsoft.EntityFrameworkCore;
+using Software_Foundations_Learning_Programme_.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,8 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<EvGrantApplicationContext>(dbContextOptions
-    => dbContextOptions.UseSqlite(
-        builder.Configuration["EvGrantApplicationDBConnectionString"]));
+    => dbContextOptions.UseSqlite("Data Source=EvGrantApplication.db"));
+
+builder.Services.AddScoped<IEvGrantRepository, EvGrantRepository>();
 
 var app = builder.Build();
 
