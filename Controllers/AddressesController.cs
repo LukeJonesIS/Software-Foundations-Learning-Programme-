@@ -24,5 +24,16 @@ namespace Software_Foundations_Learning_Programme_.Controllers
             }
             return Ok(addressToReturn);
         }
+
+        [HttpGet("check/{postcode}")] 
+        public async Task<ActionResult<Boolean>> Check(string postcode)
+        {
+            var eligibility = await _evGrantRepository.Check(postcode);
+
+            if (eligibility == null){
+                return false;
+            }
+            return true;
+        }
     }
 }

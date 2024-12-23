@@ -19,6 +19,11 @@ namespace Software_Foundations_Learning_Programme_.Services
             _context.Applications.Add(application);
         }
 
+        public async Task<EligibleAddress?> Check(string postcode)
+        {
+            return await _context.EligibleAddress.Where(a => a.Postcode == postcode).FirstOrDefaultAsync();
+        }
+
         public async Task<List<Address>?> GetAddresses(string postcode)
         {
             return await _context.Addresses.Where(a => a.Postcode == postcode)
