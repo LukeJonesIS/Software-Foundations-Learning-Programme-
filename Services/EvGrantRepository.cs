@@ -19,9 +19,14 @@ namespace Software_Foundations_Learning_Programme_.Services
             _context.Applications.Add(application);
         }
 
-        public async Task<EligibleAddress?> Check(string postcode)
+        public async Task<EligibleAddress?> CheckAddress(string postcode)
         {
             return await _context.EligibleAddress.Where(a => a.Postcode == postcode).FirstOrDefaultAsync();
+        }
+
+        public async Task<EligibleFuel?> CheckVehicle(string fuel_type)
+        {
+            return await _context.EligibleFuel.Where(a => a.Fuel_type == fuel_type).FirstOrDefaultAsync();
         }
 
         public async Task<List<Address>?> GetAddresses(string postcode)

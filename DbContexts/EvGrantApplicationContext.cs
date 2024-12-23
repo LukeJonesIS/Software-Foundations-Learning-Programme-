@@ -10,6 +10,7 @@ namespace Software_Foundations_Learning_Programme_.DbContexts
         public DbSet<Vehicle> Vehicles {get; set;}
         public DbSet<Address> Addresses {get; set;}
         public DbSet<EligibleAddress> EligibleAddress { get; set; }
+        public DbSet<EligibleFuel> EligibleFuel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -67,6 +68,13 @@ namespace Software_Foundations_Learning_Programme_.DbContexts
                     new EligibleAddress()
                 {
                     Postcode = "NO7_4RL"
+                }
+                );
+            modelBuilder.Entity<EligibleFuel>()
+                .HasData(
+                    new EligibleFuel()
+                {
+                    Fuel_type = "electric"
                 }
                 );
             base.OnModelCreating(modelBuilder);

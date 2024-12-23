@@ -25,10 +25,10 @@ namespace Software_Foundations_Learning_Programme_.Controllers
             return Ok(addressToReturn);
         }
 
-        [HttpGet("check/{postcode}")] 
-        public async Task<ActionResult<Boolean>> Check(string postcode)
+        [HttpGet("/check/{postcode}")] 
+        public async Task<ActionResult<Boolean>> CheckAddress(string postcode)
         {
-            var eligibility = await _evGrantRepository.Check(postcode);
+            var eligibility = await _evGrantRepository.CheckAddress(postcode);
 
             if (eligibility == null){
                 return false;

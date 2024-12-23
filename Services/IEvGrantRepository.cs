@@ -9,6 +9,7 @@ namespace Software_Foundations_Learning_Programme_.Services
         Task<Vehicle?> GetVehicle(string vrn);
         Task AddApplication(Application application);
         Task<bool> SaveChangesAsync();
-        Task<EligibleAddress?> Check(string postcode);
+        Task<EligibleAddress?> CheckAddress(string postcode);
+        Task<EligibleFuel?> CheckVehicle(string fuel_type);
     }
 }
