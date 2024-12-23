@@ -24,7 +24,7 @@ namespace Software_Foundations_Learning_Programme_.Controllers
             }
             return Ok(addressToReturn);
         }
-        [HttpGet("/check/{fuel_type}")] 
+        [HttpGet("Check/{fuel_type}")] 
         public async Task<ActionResult<Boolean>> CheckVehicle(string fuel_type)
         {
             var eligibility = await _evGrantRepository.CheckVehicle(fuel_type.ToLower());
