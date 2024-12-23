@@ -18,7 +18,25 @@ builder.Services.AddDbContext<EvGrantApplicationContext>(dbContextOptions
 
 builder.Services.AddScoped<IEvGrantRepository, EvGrantRepository>();
 
+builder.WebHost.UseUrls("http://0.0.0.0:80");
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost3000", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()                     
+              .AllowAnyMethod();                   
+    });
+});
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<EvGrantApplicationContext>();
+    context.Database.Migrate(); // Automatically apply migrations
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -30,6 +48,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+app.UseCors("AllowLocalhost3000");
 
 app.UseAuthorization();
 

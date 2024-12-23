@@ -1,0 +1,15 @@
+# Build Stage
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /source
+COPY . .
+RUN dotnet restore "Software-Foundations-Learning-Programme-.csproj" --disable-parallel
+RUN dotnet publish "Software-Foundations-Learning-Programme-.csproj" -c release -o /app --no-restore
+ 
+# Serve Stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+COPY --from=build /app ./
+ 
+EXPOSE 8080
+ 
+ENTRYPOINT [ "dotnet",  "Software-Foundations-Learning-Programme-.dll"]
