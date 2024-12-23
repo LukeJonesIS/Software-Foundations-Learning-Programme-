@@ -23,6 +23,23 @@
         rows: [
           {
             key: {
+              text: "Access to eligible parking"
+            },
+            value: {
+              text: data['adequate-parking']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/Check-eligible-path/is-parking-eligible",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+          {
+            key: {
               text: "Vehicle registration"
             },
             value: {

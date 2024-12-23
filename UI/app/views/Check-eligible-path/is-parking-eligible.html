@@ -15,47 +15,34 @@ href: "javascript:window.history.back()"
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
-    <h1 class="govuk-heading-l">
-      Do you meet the adequate-on-street parking criteria?
-    </h1>
-
     <form class="form" action="/Check-eligible-path/is-vrn-EV" method="post">
 
-      <h2 class="govuk-heading-m">
-        Adequate on-street parking
-      </h2>
-      <p>
-        The property must have access to adequate on-street parking. This means that street parking is generally
-        available outside or near your home, that the on-street parking provision is lawful and does not serve to
-        prejudice the safety and free flow of vehicular and pedestrian traffic. This includes ensuring the road is
-        sufficiently wide to allow easy passage of traffic. The final decision on whether your property has access to
-        adequate on-street parking is with your planning and highways authority (or where applicable private
-        landowners), who will determine whether a cross-pavement charging solution is suitable to serve your property.
-      </p>
-      <p>
-        This grant does not confer ownership over, exclusive use of, or reserved access to any on-street parking space
-        outside of or near to your home and cannot therefore guarantee you a parking space. You therefore may not have
-        constant access to the funded chargepoint.
-      </p>
-      <p>
-        You will not be eligible for this grant if you have private and exclusive access to off-street parking such as a
-        driveway, garage or residential car park.
-      </p>
       {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
-      {{ govukCheckboxes({
-        name: "confirm-adequate-parking",
+      {{ govukRadios({
+        name: "adequate-parking",
+        id: "adequate-parking",
+        value: data["adequate-parking"],
         fieldset: {
           legend: {
+            text: "Do you meet the adequate-on-street parking criteria?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
+        hint: {
+          text:"Street parking must be generally available outside or near your home.
+          This on-street parking must be legal and not disrupt the safety or flow for vehicles 
+          or pedestrians."}
+        ,
         items: [
           {
-            value: "confirm-parking",
-            text: "I confirm that I meet the adequate-on-street parking criteria"
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
           }
         ]
       }) }}
