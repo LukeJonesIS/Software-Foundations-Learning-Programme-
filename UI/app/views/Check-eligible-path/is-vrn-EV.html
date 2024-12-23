@@ -1,0 +1,51 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Enter the vehicle registration<br>(number plate)
+      </h1>
+
+      <form class="form" action="/Check-eligible-path/is-address-eligible" method="post">
+
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          name: "user-vrn",
+          id: "user-vrn",
+          classes: "govuk-input--width-10",
+          label: {
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          value: data['user-vrn'],
+          hint: {
+            text: "For example CU57ABC"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

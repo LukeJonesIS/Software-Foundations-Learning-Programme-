@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Enter your details
+      </h1>
+
+      <form class="form" action="/Submission-path/check-submission-answers" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            classes: "govuk-label--s",
+            text: "Full Name",
+            isPageHeading: true
+          },
+          classes: "govuk-input--width-20",
+          id: "user-name",
+          name: "user-name",
+          value: data['user-name']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            classes: "govuk-label--s",
+            text: "Email Address",
+            isPageHeading: true
+          },
+          classes: "govuk-input--width-20",
+          id: "user-email",
+          name: "user-email",
+          value: data['user-email']
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

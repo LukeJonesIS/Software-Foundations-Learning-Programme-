@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o2IkoBAnWIA=",
+  "dgSpecHash": "iI6xyv3CFMM=",
   "success": true,
-  "projectFilePath": "/home/vagrant/Software-Foundations-Learning-Programme-/Software-Foundations-Learning-Programme-.csproj",
+  "projectFilePath": "/home/vagrant/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme-.csproj",
   "expectedPackageFiles": [
     "/home/vagrant/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/vagrant/.nuget/packages/microsoft.aspnetcore.openapi/8.0.8/microsoft.aspnetcore.openapi.8.0.8.nupkg.sha512",
