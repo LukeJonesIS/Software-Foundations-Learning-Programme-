@@ -59,9 +59,6 @@
             key: {
               text: "Address"
             },
-            value: {
-              text: data['addressDropdown']
-            },
             actions: {
               items: [
                 {
@@ -93,4 +90,21 @@
 
     </div>
   </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  // On page load, set the value from localStorage to the element with ID 'address'
+  window.addEventListener('load', function () {
+    var address = localStorage.getItem('address'); // Get the stored address value
+
+    if (address) {
+      // Find the element with ID 'address' and set its text
+      var addressElement = document.querySelectorAll('.govuk-summary-list__value')[2];  // Select the first value element
+      if (addressElement) {
+        addressElement.textContent = address;
+      }
+    }
+  });
+</script>
 {% endblock %}

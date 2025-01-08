@@ -20,7 +20,7 @@
         Enter postcode
       </h1>
 
-      <form class="form" action="/Check-eligible-path/check-eligible-answers" method="post">
+      <form class="form" id="address_form" action="/Check-eligible-path/check-eligible-answers" method="post" onsubmit="setAddress()">
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -42,21 +42,29 @@
         </div>
 
         {{ govukButton({
-          text: "Continue"
+          text: "Continue",
+          attributes: { id: "continue-button" }
         }) }}
 
         <p class="govuk-body">
           <a href="/Check-eligible-path/enter-address-manually.html" class="govuk-link">Enter address manually</a>.
         </p>
-        
+        <!-- Hidden input field to store the selected address -->
+        <input type="hidden" id="addressStore" name="addressStore">
 
       </form>
 
     </div>
   </div>
-
+  <script>
+    function setAddress() {
+      const address = document.getElementById('address-dropdown')
+      document.getElementById('addressStore').value = address.value;
+    }
+  </script>
 {% endblock %}
 
 {% block pageScripts %}
 <script src="/public/javascripts/addresslookup.js"></script>
+<script src="/public/javascripts/addresscheck.js"></script>
 {% endblock %}
