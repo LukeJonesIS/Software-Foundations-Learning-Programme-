@@ -72,27 +72,15 @@
     ]
   }) }}
 
-  <form action="/confirmation" method="post" novalidate>
+  <form action="/confirmation" id="vrncheck" method="post" novalidate>
 
     {{ govukButton({
-      text: "Accept and send"
+      text: "Confirm"
     }) }}
 
   </form>
 
 {% endblock %}
 {% block pageScripts %}
-<script>
-  window.addEventListener("load", function() {
-    const vehicleVRN = localStorage.getItem('vehicleVRN');
-    const vehicleMake = localStorage.getItem('vehicleMake');
-    const vehicleModel = localStorage.getItem('vehicleModel');
-    const vehicleFuelType = localStorage.getItem('vehicleFuelType');
-    var addressElement = document.querySelectorAll('.govuk-table__cell')
-    addressElement[1].textContent = vehicleVRN;
-    addressElement[3].textContent = vehicleMake;
-    addressElement[5].textContent = vehicleModel;
-    addressElement[7].textContent = vehicleFuelType;
-});
-</script>
+<script src="/public/javascripts/vrncheck.js"></script>
 {% endblock %}
