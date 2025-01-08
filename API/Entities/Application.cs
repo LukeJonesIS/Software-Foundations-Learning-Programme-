@@ -18,16 +18,8 @@ namespace Software_Foundations_Learning_Programme_.Entities
         public required string Email { get; set; }
 
         [Required]
-        [MaxLength(50)]
-        public string Address_line1 { get; set; } = string.Empty;
-        [MaxLength(50)]
-        public string? Address_line2 { get; set; }
-        [Required]
-        [MaxLength(20)]
-        public string City { get; set; } = string.Empty;
-        [Required]
-        [MaxLength(20)]
-        public string Postcode { get; set; } = string.Empty;
+        [MaxLength(150)]
+        public string Address { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(10)]

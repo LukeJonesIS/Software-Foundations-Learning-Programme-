@@ -23,10 +23,7 @@ namespace Software_Foundations_Learning_Programme_.Controllers
            {
             Name = application.Name,
             Email = application.Email,
-            Address_line1 = application.Address_line1,
-            Address_line2 = application.Address_line2,
-            Postcode = application.Postcode,
-            City = application.City,
+            Address = application.Address,
             Vrn = application.Vrn
            };
            await _evGrantRepository.AddApplication(finalApplication);

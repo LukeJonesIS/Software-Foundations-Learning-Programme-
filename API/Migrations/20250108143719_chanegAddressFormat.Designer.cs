@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Software_Foundations_Learning_Programme_.DbContexts;
 
@@ -10,9 +11,11 @@ using Software_Foundations_Learning_Programme_.DbContexts;
 namespace Software_Foundations_Learning_Programme_.Migrations
 {
     [DbContext(typeof(EvGrantApplicationContext))]
-    partial class EvGrantApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20250108143719_chanegAddressFormat")]
+    partial class chanegAddressFormat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
