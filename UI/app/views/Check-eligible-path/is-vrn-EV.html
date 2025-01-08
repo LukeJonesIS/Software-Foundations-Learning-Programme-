@@ -20,7 +20,7 @@
         Enter the vehicle registration<br>(number plate)
       </h1>
 
-      <form class="form" action="/Check-eligible-path/is-address-eligible" method="post">
+      <form class="form" action="/Check-eligible-path/is-address-eligible" method="post" onsubmit = "getVehicleDetails()">
 
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -40,7 +40,8 @@
         }) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Continue",
+          attributes: { id: "continue-button" }
         }) }}
 
       </form>
@@ -49,3 +50,8 @@
   </div>
 
 {% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/getvrn.js"></script>
+{% endblock %}
+ 

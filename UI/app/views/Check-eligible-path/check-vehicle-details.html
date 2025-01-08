@@ -1,0 +1,98 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+  {{ govukTable({
+    caption: "Are these vehicle details correct?",
+    captionClasses: "govuk-table__caption--m",
+    id: "vrn-table",
+    rows: [
+      [
+        {
+          text: "VRN"
+        },
+        {
+          id: "vehicle-vrn"
+        }
+      ],
+      [
+        {
+          text: "Make"
+        },
+        {
+          id: "vehicle-make"
+        }
+      ],
+      [
+        {
+          text: "Model"
+        },
+        {
+          id: "vehicle-model"
+        }
+      ],
+      [
+        {
+          text: "Fuel Type"
+        },
+        {
+          id: "vehicle-fuel-type"
+        }
+      ]
+    ]
+  }) }}
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+  {{ govukRadios({
+    classes: "govuk-radios--inline",
+    name: "vrn-correct",
+    id: "vrn-correct",
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+
+  <form action="/confirmation" method="post" novalidate>
+
+    {{ govukButton({
+      text: "Accept and send"
+    }) }}
+
+  </form>
+
+{% endblock %}
+{% block pageScripts %}
+<script>
+  window.addEventListener("load", function() {
+    const vehicleVRN = localStorage.getItem('vehicleVRN');
+    const vehicleMake = localStorage.getItem('vehicleMake');
+    const vehicleModel = localStorage.getItem('vehicleModel');
+    const vehicleFuelType = localStorage.getItem('vehicleFuelType');
+    var addressElement = document.querySelectorAll('.govuk-table__cell')
+    addressElement[1].textContent = vehicleVRN;
+    addressElement[3].textContent = vehicleMake;
+    addressElement[5].textContent = vehicleModel;
+    addressElement[7].textContent = vehicleFuelType;
+});
+</script>
+{% endblock %}
