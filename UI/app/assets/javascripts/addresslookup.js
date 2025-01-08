@@ -41,8 +41,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (Array.isArray(data) && data.length > 0) {
                     data.forEach(address => {
                         const option = document.createElement('option');
-                        option.value = address.address_line1 + ', ' + address.address_line2 + ', ' + address.city + ', ' + address.postcode; // Unique value for submission
-                        option.textContent = address.address_line1 + ', ' + address.address_line2 + ', ' + address.city + ', ' + address.postcode; // Display text
+                        const address_string = (address.address_line1 + ', ' + address.address_line2 + ', ' + address.city + ', ' + address.postcode.replace("_", " "))
+                            .split(',')
+                            .map(item => item.trim())
+                            .filter(item => item !== "") 
+                            .join(', ');
+                        option.value = address_string; // Unique value for submission
+                        option.textContent = address_string; // Display text
                         addressDropdown.appendChild(option);
                     });
                 } else {
