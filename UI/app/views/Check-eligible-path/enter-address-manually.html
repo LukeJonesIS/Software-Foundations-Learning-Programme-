@@ -86,7 +86,7 @@
       const addressLine1 = document.getElementById('address-line1').value;
       const addressLine2 = document.getElementById('address-line-2').value;
       const addressTown = document.getElementById('address-town').value;
-      const addressPostcode = document.getElementById('address-postcode').value;
+      const addressPostcode = document.getElementById('address-postcode').value.toUpperCase();
 
       let selectedAddress = (addressLine1 + ', ' + addressLine2 + ', ' + addressTown + ', ' + addressPostcode).split(',')
           .map(item => item.trim())
