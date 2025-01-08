@@ -20,26 +20,29 @@
         Enter postcode
       </h1>
 
-      <form class="form" action="/Check-eligible-path/find-eligible-address" method="post">
+      <form class="form" action="/Check-eligible-path/check-eligible-answers" method="post">
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
 
-        {{ govukInput({
-          label: {
-            classes: "govuk-label--l",
-            isPageHeading: true
-          },
-          classes: "govuk-input--width-10",
-          hint: {
-            text: "Enter the postcode the charger will be installed"
-          },
-          id: "user-postcode",
-          name: "user-postcode",
-          value: data['user-postcode']
-        }) }}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-postcode">Postcode</label>
+          {{ govukInput({
+            classes: "govuk-input--width-10",
+            id: "address-postcode",
+            name: "addressPostcode",
+            autocomplete: "postal-code"
+          }) }}
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-dropdown">Select your address</label>
+          <select class="govuk-select" id="address-dropdown" name="addressDropdown">
+            <option value="">Select an address</option>
+          </select>
+        </div>
 
         {{ govukButton({
-          text: "Find Address"
+          text: "Continue"
         }) }}
 
         <p class="govuk-body">
@@ -52,4 +55,8 @@
     </div>
   </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/addresslookup.js"></script>
 {% endblock %}
