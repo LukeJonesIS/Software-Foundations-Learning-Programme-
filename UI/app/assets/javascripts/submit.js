@@ -4,8 +4,8 @@ document.getElementById('submitForm').addEventListener('submit', function(event)
   
     // Collect form data
     const data = {
-      name: document.querySelectorAll('.govuk-summary-list__value')[0].textContent,
-      email: document.querySelectorAll('.govuk-summary-list__value')[1].textContent,
+      name: document.querySelectorAll('.govuk-summary-list__value')[0].textContent.trim(),
+      email: document.querySelectorAll('.govuk-summary-list__value')[1].textContent.trim(),
       address: document.querySelectorAll('.govuk-summary-list__value')[2].textContent,
       vrn: document.querySelectorAll('.govuk-summary-list__value')[3].textContent
     };
