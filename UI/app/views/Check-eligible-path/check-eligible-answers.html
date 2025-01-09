@@ -98,6 +98,7 @@
   window.addEventListener('load', function () {
     var address = localStorage.getItem('address'); // Get the stored address value
     const vehicleVRN = localStorage.getItem('vehicleVRN');
+    const parking = localStorage.getItem('parking');
     if (address) {
       // Find the element with ID 'address' and set its text
       var addressElement = document.querySelectorAll('.govuk-summary-list__value')[2];  // Select the first value element
@@ -110,6 +111,13 @@
       var vrnElement = document.querySelectorAll('.govuk-summary-list__value')[1];  // Select the first value element
       if (vrnElement) {
         vrnElement.textContent = vehicleVRN;
+      }
+    }
+    if (parking) {
+      // Find the element with ID 'address' and set its text
+      var parkingElement = document.querySelectorAll('.govuk-summary-list__value')[0];  // Select the first value element
+      if (parkingElement) {
+        parkingElement.textContent = parking;
       }
     }
   });

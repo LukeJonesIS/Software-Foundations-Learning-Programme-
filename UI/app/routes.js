@@ -25,12 +25,3 @@ router.post('/Check-eligible-path/is-address-eligible', function (req, res) {
     res.redirect('/Check-eligible-path/Confirmation-pages/not-eligible.html')
   }
 })
-
-router.post('/Check-eligible-path/find-eligible-address', function (req, res) {
-  var postcode_answer = req.session.data['user-postcode']
-  if (postcode_answer != '') {
-    res.redirect('/Check-eligible-path/find-eligible-address')
-  } else {
-    res.redirect('/Check-eligible-path/Confirmation-pages/not-eligible.html')
-  }
-})

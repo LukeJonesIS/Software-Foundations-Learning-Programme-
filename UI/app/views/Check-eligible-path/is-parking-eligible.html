@@ -48,7 +48,8 @@ href: "javascript:window.history.back()"
       }) }}
 
       {{ govukButton({
-        text: "Continue"
+        text: "Continue",
+        id: "continue-button"
       }) }}
 
     </form>
@@ -56,4 +57,62 @@ href: "javascript:window.history.back()"
   </div>
 </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  const continueButton = document.querySelector('#continue-button');
+  continueButton.addEventListener('click', function(event) {
+  event.preventDefault();  // Prevent the form from submitting traditionally
+  let errors = [];
+
+  // Get the form inputs
+  const radioInputs = document.querySelectorAll('[name="adequate-parking"]');
+    // Clear any previous error summary or input errors
+  const errorSummaryContainer = document.querySelector('.govuk-grid-column-two-thirds');
+  const existingErrorSummary = document.querySelector('.govuk-error-summary');
+  if (existingErrorSummary) {
+    existingErrorSummary.remove();
+  }
+  const radioValue = document.querySelector('[name="adequate-parking"]').value;
+  radioInputs.forEach(input => {
+    input.classList.remove('govuk-input--error');
+    input.removeAttribute('aria-invalid');
+  });
+
+  const selectedRadio = Array.from(radioInputs).find(input => input.checked);
+
+  console.log(selectedRadio)
+  if (!selectedRadio) {
+    errors.push({
+      text: "Select a response",
+      href: "#adequate-parking"
+    });
+  }
+
+
+    // If there are errors, display them
+  if (errors.length > 0) {
+      // Render the error summary and error list directly on the page
+    const errorSummaryHtml = `
+      <div class="govuk-error-summary" role="alert" aria-labelledby="error-summary-title">
+      <h2 id="error-summary-title" class="govuk-error-summary__title">There is a problem</h2>
+      <ul class="govuk-error-summary__list">
+      ${errors.map(error => `<li><a href="${error.href}">${error.text}</a></li>`).join('')}
+      </ul>
+      </div>
+      `;
+
+    errorSummaryContainer.insertAdjacentHTML('afterbegin', errorSummaryHtml);
+  } else {
+    localStorage.setItem('parking', radioValue);
+    if (radioValue =="Yes"){
+    window.location.href = "/Check-eligible-path/is-vrn-EV";
+    }
+    else{
+    window.location.href ='/Check-eligible-path/Confirmation-pages/not-eligible.html';
+    }
+  }
+  });
+</script>
 {% endblock %}
