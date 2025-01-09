@@ -6,13 +6,12 @@
 
 {% block beforeContent %}
   {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -20,9 +19,10 @@
         Enter your details
       </h1>
 
-      <form class="form" action="/Submission-path/check-submission-answers" method="post">
+      <form class="form" id="details-form" action="/Submission-path/check-submission-answers" method="post">
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
         {{ govukInput({
           label: {
@@ -30,7 +30,6 @@
             text: "Full Name",
             isPageHeading: true
           },
-          classes: "govuk-input--width-20",
           id: "user-name",
           name: "user-name",
           value: data['user-name']
@@ -42,19 +41,106 @@
             text: "Email Address",
             isPageHeading: true
           },
-          classes: "govuk-input--width-20",
           id: "user-email",
           name: "user-email",
           value: data['user-email']
         }) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Continue",
+          attributes: { id: "continue-button" }
         }) }}
 
       </form>
 
     </div>
   </div>
+{% endblock %}
 
+{% block pageScripts %}
+<script>
+  const continueButton = document.querySelector('#continue-button');
+  continueButton.addEventListener('click', function(event) {
+    event.preventDefault();  // Prevent the form from submitting traditionally
+    let errors = [];
+
+    // Get the form inputs
+    const userName = document.querySelector('[name="user-name"]');
+    const userEmail = document.querySelector('[name="user-email"]');
+
+    // Clear any previous error summary or input errors
+    const errorSummaryContainer = document.querySelector('.govuk-grid-column-two-thirds');
+    const existingErrorSummary = document.querySelector('.govuk-error-summary');
+    if (existingErrorSummary) {
+      existingErrorSummary.remove();
+    }
+    userName.classList.remove('govuk-input--error');
+    userEmail.classList.remove('govuk-input--error');
+    userName.removeAttribute('aria-invalid');
+    userEmail.removeAttribute('aria-invalid');
+
+    // Check for empty fields
+    if (!userName.value.trim()) {
+      errors.push({
+        text: "Enter your full name",
+        href: "#user-name"
+      });
+    }else if (userName.value.trim().length > 20) {
+      errors.push({
+        text: "Entered name address is too long",
+        href: "#user-name"
+      });
+    }
+    if (!userEmail.value.trim()) {
+      errors.push({
+        text: "Enter your email address",
+        href: "#user-email"
+      });
+    } else if (userEmail.value.trim().length > 50) {
+      errors.push({
+        text: "Entered email address is too long",
+        href: "#user-email"
+      });
+    } else {
+    // Regular expression to validate the email format
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
+    if (!emailRegex.test(userEmail.value.trim())) {
+      errors.push({
+        text: "Enter a valid email address",
+        href: "#user-email"
+      });
+    }
+  }
+
+    // If there are errors, display them
+    if (errors.length > 0) {
+      // Add error class and aria-invalid attribute to inputs
+      if (errors.some(error => error.href === '#user-name')) {
+        userName.setAttribute('aria-invalid', 'true');
+        userName.classList.add('govuk-input--error');
+      }
+
+      if (errors.some(error => error.href === '#user-email')) {
+        userEmail.setAttribute('aria-invalid', 'true');
+        userEmail.classList.add('govuk-input--error');
+      }
+
+      // Render the error summary and error list directly on the page
+      const errorSummaryHtml = `
+        <div class="govuk-error-summary" role="alert" aria-labelledby="error-summary-title">
+          <h2 id="error-summary-title" class="govuk-error-summary__title">There is a problem</h2>
+          <ul class="govuk-error-summary__list">
+            ${errors.map(error => `<li><a href="${error.href}">${error.text}</a></li>`).join('')}
+          </ul>
+        </div>
+      `;
+
+      errorSummaryContainer.insertAdjacentHTML('afterbegin', errorSummaryHtml);
+    } else {
+      // No errors, proceed with form submission
+      document.querySelector('#details-form').submit();
+    }
+  });
+</script>
 {% endblock %}
