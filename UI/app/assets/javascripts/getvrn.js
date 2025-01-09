@@ -8,8 +8,7 @@ function getVehicleDetails() {
     fetch(apiEndpoint + userVrn).then(response => {
 
         if (!response.ok) {
-            throw new Error('Network response was not ok');
-            //add non existant error
+            window.location.href = '/Check-eligible-path/vrn-not-found';
         }
         return response.json();
     })
