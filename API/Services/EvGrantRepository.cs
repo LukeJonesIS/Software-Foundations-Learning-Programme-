@@ -14,9 +14,10 @@ namespace Software_Foundations_Learning_Programme_.Services
             _context = context ?? throw new NotImplementedException(nameof(context));
         }
 
-        public async Task AddApplication(Application application)
+        public async Task<List<Application>> AddApplication(Application application)
         {
             _context.Applications.Add(application);
+            return await _context.Applications.ToListAsync();
         }
 
         public async Task<EligibleAddress?> CheckAddress(string postcode)

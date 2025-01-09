@@ -96,7 +96,8 @@
         By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.
       </p>
 
-      <form action="/Submission-path/application-submitted" method="post" novalidate>
+      <form id="submitForm" action="javascript:void(0);" method="post" novalidate>
+
 
         {{ govukButton({
           text: "Accept and send"
@@ -108,26 +109,6 @@
   </div>
 {% endblock %}
 {% block pageScripts %}
-<script>
-  // On page load, set the value from localStorage to the element with ID 'address'
-  window.addEventListener('load', function () {
-    var address = localStorage.getItem('address'); // Get the stored address value
-    const vehicleVRN = localStorage.getItem('vehicleVRN');
-    if (address) {
-      // Find the element with ID 'address' and set its text
-      var addressElement = document.querySelectorAll('.govuk-summary-list__value')[2];  // Select the first value element
-      if (addressElement) {
-        addressElement.textContent = address;
-      }
-    }
-    if (vehicleVRN) {
-      // Find the element with ID 'address' and set its text
-      var vrnElement = document.querySelectorAll('.govuk-summary-list__value')[3];  // Select the first value element
-      if (vrnElement) {
-        vrnElement.textContent = vehicleVRN;
-      }
-    }
-  });
-</script>
+<script src= "/public/javascripts/submit.js"></script>
 {% endblock %}
 
