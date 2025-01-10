@@ -22,7 +22,6 @@ namespace Software_Foundations_Learning_Programme_.Tests
         [Fact]
         public async Task CreateApplication_ReturnsCreatedAtAction_WhenApplicationIsCreated()
         {
-            // Arrange
             var applicationDto = new ApplicationCreationDto
             {
                 Name = "John Doe",
@@ -33,26 +32,22 @@ namespace Software_Foundations_Learning_Programme_.Tests
 
             var applicationToReturn = new Application
             {
-                Id = 0, // Simulating the ID after creation
+                Id = 0,
                 Name = applicationDto.Name,
                 Email = applicationDto.Email,
                 Address = applicationDto.Address,
                 Vrn = applicationDto.Vrn
             };
 
-            // Mocking AddApplication and SaveChangesAsync
             _mockEvGrantRepository.Setup(repo => repo.AddApplication(It.IsAny<Application>())).Verifiable();
             _mockEvGrantRepository.Setup(repo => repo.SaveChangesAsync())
                 .ReturnsAsync(true);  
 
-            // Act
             var result = await _controller.CreateApplication(applicationDto);
 
-            // Assert
             var actionResult = Assert.IsType<ActionResult<Application>>(result);
             var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(actionResult.Result);
 
-            // Validate that the response contains the correct URL and application data
             Assert.Equal(nameof(ApplicationsController.CreateApplication), createdAtActionResult.ActionName);
             Assert.Equal(0, createdAtActionResult.RouteValues["id"]);
             var returnValue = Assert.IsType<Application>(createdAtActionResult.Value);
