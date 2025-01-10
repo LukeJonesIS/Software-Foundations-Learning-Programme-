@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "v2Q9UpGO0d0=",
   "success": true,
-  "projectFilePath": "/home/vagrant/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme-/Software-Foundations-Learning-Programme-.csproj",
+  "projectFilePath": "/home/vagrant/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme-test/Software-Foundations-Learning-Programme-.csproj",
   "expectedPackageFiles": [
     "/home/vagrant/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",
     "/home/vagrant/.nuget/packages/microsoft.codecoverage/17.8.0/microsoft.codecoverage.17.8.0.nupkg.sha512",

@@ -959,11 +959,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/vagrant/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme-/Software-Foundations-Learning-Programme-.csproj",
+      "projectUniqueName": "/home/vagrant/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme-test/Software-Foundations-Learning-Programme-.csproj",
       "projectName": "Software-Foundations-Learning-Programme-",
-      "projectPath": "/home/vagrant/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme-/Software-Foundations-Learning-Programme-.csproj",
+      "projectPath": "/home/vagrant/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme-test/Software-Foundations-Learning-Programme-.csproj",
       "packagesPath": "/home/vagrant/.nuget/packages/",
-      "outputPath": "/home/vagrant/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme-/obj/",
+      "outputPath": "/home/vagrant/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme-test/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/vagrant/.nuget/NuGet/NuGet.Config"
