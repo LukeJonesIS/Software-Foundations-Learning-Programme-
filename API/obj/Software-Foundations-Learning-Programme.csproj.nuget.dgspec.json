@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "/home/vagrant/bootcamp/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme.csproj",
-        "projectName": "Software-Foundations-Learning-Programme-",
+        "projectName": "Software-Foundations-Learning-Programme",
         "projectPath": "/home/vagrant/bootcamp/Software-Foundations-Learning-Programme-/API/Software-Foundations-Learning-Programme.csproj",
         "packagesPath": "/home/vagrant/.nuget/packages/",
         "outputPath": "/home/vagrant/bootcamp/Software-Foundations-Learning-Programme-/API/obj/",
